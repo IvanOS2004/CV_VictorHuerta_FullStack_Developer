@@ -11,12 +11,6 @@ import ArchitectureSection from "./sections/ArchitectureSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
 
-// CSS
-import "./styles/global.css";
-import "./styles/animations.css";
-import "./styles/components.css";
-import "./styles/utilities.css";
-
 export default function App() {
   const [activeSection, setActiveSection] = useState("experience");
 
@@ -51,7 +45,6 @@ export default function App() {
       <UISection />
       <ArchitectureSection />
       <ProjectsSection />
-      <ContactSection />
 
       <Footer />
     </>
