@@ -63,9 +63,9 @@ export default function UISection() {
 
             <div
               style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 24,
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 22,
               }}
             >
               <Feature
@@ -78,8 +78,16 @@ export default function UISection() {
 
               <Feature
                 icon={reactIcon}
-                title="React and React Native"
+                title="React"
                 pct={0.95}
+                level="intermediate"
+                iconBg="rgba(14,165,233,0.08)"
+              />
+
+              <Feature
+                icon={reactIcon}
+                title="React Native"
+                pct={0.75}
                 level="intermediate"
                 iconBg="rgba(14,165,233,0.08)"
               />

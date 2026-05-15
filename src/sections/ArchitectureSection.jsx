@@ -69,8 +69,8 @@ export default function ArchitectureSection() {
 
             <div
               style={{
-                display: "flex",
-                flexDirection: "column",
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
                 gap: 22,
               }}
             >
