@@ -1,4 +1,13 @@
+import { smoothScrollTo } from "../../utils/smoothScroll";
+
 export default function Navbar({ activeSection }) {
+  const sections = [
+    { id: "experience", label: "Experience" },
+    { id: "stack", label: "Stack" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
     <nav
       style={{
@@ -23,8 +32,8 @@ export default function Navbar({ activeSection }) {
         }}
       >
         {/* Logo */}
-        <a
-          href="#"
+        <button
+          onClick={() => smoothScrollTo("experience")}
           style={{
             fontFamily: "'Syne',sans-serif",
             fontWeight: 800,
@@ -34,25 +43,30 @@ export default function Navbar({ activeSection }) {
             textDecoration: "none",
             textTransform: "uppercase",
             cursor: "none",
+            background: "none",
+            border: "none",
           }}
         >
-          Dev<span style={{ color: "#818cf8" }}>Architect</span>
-        </a>
+          Full-stack
+          <span style={{ color: "#818cf8" }}>Developer</span>
+        </button>
 
         {/* Navigation */}
         <div style={{ display: "flex", gap: 32 }}>
-          {["experience", "projects", "stack", "contact"].map((s) => (
-            <a
-              key={s}
-              href={`#${s}`}
-              className={`nav-link${activeSection === s ? " active" : ""}`}
+          {sections.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => smoothScrollTo(section.id)}
+              className={`nav-link${
+                activeSection === section.id ? " active" : ""
+              }`}
             >
-              {s.charAt(0).toUpperCase() + s.slice(1)}
-            </a>
+              {section.label}
+            </button>
           ))}
         </div>
 
-        {/* Actions */}
+        {/* Status */}
         <div style={{ display: "flex", gap: 10 }}>
           <button
             className="btn-ghost"
@@ -74,8 +88,6 @@ export default function Navbar({ activeSection }) {
             />
             Open to Work
           </button>
-
-          <button className="btn-primary">Resume ↗</button>
         </div>
       </div>
     </nav>

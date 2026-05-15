@@ -45,6 +45,7 @@ export default function App() {
       <UISection />
       <ArchitectureSection />
       <ProjectsSection />
+      <ContactSection />
 
       <Footer />
     </>

@@ -1,7 +1,33 @@
 import Reveal from "./Reveal";
 import SkillBar from "./SkillBar";
 
-export default function Feature({ icon, title, desc, pct, iconBg, delay = 0 }) {
+export default function Feature({
+  icon,
+  title,
+  pct,
+  level = "basic",
+  iconBg,
+  delay = 0,
+}) {
+  const levelConfig = {
+    basic: {
+      active: 1,
+      color: "#22c55e",
+    },
+
+    intermediate: {
+      active: 2,
+      color: "#f59e0b",
+    },
+
+    advanced: {
+      active: 3,
+      color: "#ef4444",
+    },
+  };
+
+  const currentLevel = levelConfig[level];
+
   return (
     <Reveal delay={delay}>
       <div
@@ -10,49 +36,82 @@ export default function Feature({ icon, title, desc, pct, iconBg, delay = 0 }) {
           gap: 14,
         }}
       >
+        {/* Icon */}
         <div
           style={{
-            width: 28,
-            height: 28,
-            borderRadius: 6,
+            width: 42,
+            height: 42,
+            borderRadius: 10,
             background: iconBg,
 
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
 
-            fontSize: "0.8rem",
-
             flexShrink: 0,
-            marginTop: 2,
           }}
         >
-          {icon}
+          <img
+            src={icon}
+            alt={title}
+            style={{
+              width: 22,
+              height: 22,
+              objectFit: "contain",
+            }}
+          />
         </div>
 
+        {/* Content */}
         <div style={{ flex: 1 }}>
+          {/* Header */}
           <div
             style={{
-              fontFamily: "'Syne', sans-serif",
-              fontWeight: 700,
-              color: "#fff",
-              fontSize: "0.88rem",
-              marginBottom: 4,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: 10,
             }}
           >
-            {title}
+            <div
+              style={{
+                fontFamily: "'Syne', sans-serif",
+                fontWeight: 700,
+                color: "#fff",
+                fontSize: "0.9rem",
+              }}
+            >
+              {title}
+            </div>
+
+            {/* Level Dots */}
+            <div
+              style={{
+                display: "flex",
+                gap: 6,
+              }}
+            >
+              {[1, 2, 3].map((dot) => (
+                <span
+                  key={dot}
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+
+                    background:
+                      dot <= currentLevel.active
+                        ? currentLevel.color
+                        : "#374151",
+
+                    transition: "0.3s",
+                  }}
+                />
+              ))}
+            </div>
           </div>
 
-          <div
-            style={{
-              color: "#6b7280",
-              fontSize: "0.82rem",
-              lineHeight: 1.6,
-            }}
-          >
-            {desc}
-          </div>
-
+          {/* Skill Bar */}
           <SkillBar pct={pct} />
         </div>
       </div>

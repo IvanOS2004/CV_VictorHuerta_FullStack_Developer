@@ -6,6 +6,10 @@ import SplineScene from "../components/canvas/SplineScene";
 
 import useLaptopCanvas from "../hooks/useLaptopCanvas";
 
+import reactIcon from "../assets/tech/react.svg";
+import tailwindcssIcon from "../assets/tech/tailwindcss.svg";
+import figmaIcon from "../assets/tech/figma.svg";
+
 export default function UISection() {
   return (
     <section
@@ -53,22 +57,8 @@ export default function UISection() {
                   marginBottom: 20,
                 }}
               >
-                Crafting Immersive UIs
+                Front-end skills
               </h2>
-            </Reveal>
-
-            <Reveal delay={0.06}>
-              <p
-                style={{
-                  color: "#9ca3af",
-                  lineHeight: 1.75,
-                  marginBottom: 36,
-                  fontWeight: 300,
-                }}
-              >
-                Delivering pixel-perfect, accessible, and highly interactive
-                user interfaces.
-              </p>
             </Reveal>
 
             <div
@@ -79,32 +69,31 @@ export default function UISection() {
               }}
             >
               <Feature
-                icon="⟨/⟩"
-                title="React & Next.js"
-                desc="Modern frontend architecture."
-                pct={0.92}
-                iconBg="rgba(99,102,241,0.12)"
+                icon={figmaIcon}
+                title="Figma"
+                pct={0.7}
+                level="intermediate"
+                iconBg="rgba(14,165,233,0.08)"
               />
 
               <Feature
-                icon="✦"
-                title="Tailwind CSS"
-                desc="Scalable utility-first styling."
+                icon={reactIcon}
+                title="React and React Native"
                 pct={0.95}
-                iconBg="rgba(34,211,238,0.1)"
+                level="intermediate"
+                iconBg="rgba(14,165,233,0.08)"
               />
 
               <Feature
-                icon="◈"
-                title="Framer Motion"
-                desc="Fluid animations and transitions."
-                pct={0.88}
-                iconBg="rgba(52,211,153,0.1)"
+                icon={tailwindcssIcon}
+                title="Tailwindcss"
+                pct={0.8}
+                level="intermediate"
+                iconBg="rgba(250,204,21,0.08)"
               />
             </div>
           </div>
 
-          {/* Right */}
           <Reveal delay={0.08}>
             <SplineScene
               canvasHook={useLaptopCanvas}

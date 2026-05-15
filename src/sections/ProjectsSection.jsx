@@ -34,35 +34,55 @@ export default function ProjectsSection() {
             >
               Project Showcase
             </h2>
+
+            <p
+              style={{
+                color: "#6b7280",
+                fontSize: "0.95rem",
+                maxWidth: 650,
+                margin: "0 auto",
+                lineHeight: 1.7,
+              }}
+            >
+              Proyectos.
+            </p>
           </div>
         </Reveal>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3,1fr)",
+            gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
             gap: 20,
           }}
         >
+          {/* PROJECT 1 */}
           <ProjectCard
-            icon="📊"
-            title="Nexus Analytics Platform"
-            desc="Real-time analytics dashboard."
-            tags={["Next.js", "PostgreSQL"]}
+            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+1"
+            title="Medical Appointment Platform"
+            desc="Cross-platform medical appointment app developed using React Native, Tailwind CSS, Java Spring Boot and Postman for API testing and integration."
+            tags={[
+              "React Native",
+              "Tailwind CSS",
+              "Java Spring Boot",
+              "Postman",
+            ]}
           />
 
+          {/* PROJECT 2 */}
           <ProjectCard
-            icon="🛒"
-            title="E-Commerce Microservices"
-            desc="Headless commerce architecture."
-            tags={["Node.js", "Stripe"]}
+            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+2"
+            title="Correos de México / Mex-Post APIs"
+            desc="Backend API development for logistic and package management."
+            tags={["FastAPI", "Python", "Postman", "QR Code", "PDF Automation"]}
           />
 
+          {/* PROJECT 3 */}
           <ProjectCard
-            icon="⚙️"
-            title="WebGL Configurator"
-            desc="Interactive 3D product configurator."
-            tags={["Three.js", "React Three Fiber"]}
+            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+3"
+            title="Smart School Website"
+            desc="Frontend development for an educational platform."
+            tags={["React", "Tailwind CSS"]}
           />
         </div>
       </div>

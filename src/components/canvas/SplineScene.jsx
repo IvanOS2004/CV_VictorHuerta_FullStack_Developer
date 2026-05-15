@@ -2,7 +2,6 @@ import { useRef } from "react";
 
 export default function SplineScene({
   canvasHook,
-  label,
   height = 460,
   className = "",
 }) {
@@ -22,8 +21,6 @@ export default function SplineScene({
           display: "block",
         }}
       />
-
-      <div className="spline-label">{label}</div>
     </div>
   );
 }

@@ -1,12 +1,10 @@
 import Reveal from "../common/Reveal";
 
 export default function ProjectCard({
-  icon,
+  image,
   title,
   desc,
   tags = [],
-  previewBg,
-  previewEl,
   delay = 0,
 }) {
   return (
@@ -15,37 +13,39 @@ export default function ProjectCard({
         {/* Preview */}
         <div
           style={{
-            height: 180,
-            background: previewBg || "linear-gradient(135deg,#111827,#1a2035)",
+            height: 200,
             position: "relative",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
             overflow: "hidden",
+            background: "#0f172a",
           }}
         >
-          {/* Icon */}
-          {icon && (
-            <div
-              style={{
-                width: 72,
-                height: 72,
-                borderRadius: 14,
-                background: "rgba(99,102,241,0.12)",
-                border: "1px solid rgba(99,102,241,0.25)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "1.6rem",
-                zIndex: 2,
-              }}
-            >
-              {icon}
-            </div>
-          )}
+          <img
+            src={image}
+            alt={title}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
 
-          {/* Custom Preview Element */}
-          {previewEl}
+              transition: "transform 0.4s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          />
+
+          {/* Overlay */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(to top, rgba(7,9,15,0.65), rgba(7,9,15,0.05))",
+            }}
+          />
         </div>
 
         {/* Content */}
@@ -83,14 +83,49 @@ export default function ProjectCard({
             style={{
               display: "flex",
               flexWrap: "wrap",
-              gap: 6,
+              gap: 10,
               marginBottom: 14,
             }}
           >
-            {tags.map((tag) => (
-              <span key={tag} className="tag">
-                {tag}
-              </span>
+            {tags.map((tag, index) => (
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 7,
+
+                  padding: "7px 12px",
+
+                  borderRadius: 999,
+
+                  background: "rgba(99,102,241,0.08)",
+
+                  border: "1px solid rgba(99,102,241,0.18)",
+
+                  color: "#c7d2fe",
+
+                  fontSize: "0.72rem",
+
+                  fontFamily: "'Space Mono', monospace",
+
+                  letterSpacing: "0.03em",
+
+                  transition: "0.25s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.borderColor = "rgba(99,102,241,0.4)";
+                  e.currentTarget.style.background = "rgba(99,102,241,0.14)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0px)";
+                  e.currentTarget.style.borderColor = "rgba(99,102,241,0.18)";
+                  e.currentTarget.style.background = "rgba(99,102,241,0.08)";
+                }}
+              >
+                <span>{tag}</span>
+              </div>
             ))}
           </div>
 

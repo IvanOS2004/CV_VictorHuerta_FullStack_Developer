@@ -6,6 +6,13 @@ import SplineScene from "../components/canvas/SplineScene";
 
 import useServerCanvas from "../hooks/useServerCanvas";
 
+import springIcon from "../assets/tech/spring.svg";
+import dotnetIcon from "../assets/tech/dotnet.svg";
+import postgresIcon from "../assets/tech/postgres.svg";
+import postmanIcon from "../assets/tech/postman.svg";
+import dockerIcon from "../assets/tech/docker.svg";
+import awsIcon from "../assets/tech/aws.svg";
+
 export default function ArchitectureSection() {
   return (
     <section
@@ -42,11 +49,7 @@ export default function ArchitectureSection() {
           }}
         >
           <Reveal delay={0.08}>
-            <SplineScene
-              canvasHook={useServerCanvas}
-              label="[ 3D Data Node Asset ]"
-              height={440}
-            />
+            <SplineScene canvasHook={useServerCanvas} height={440} />
           </Reveal>
 
           <div>
@@ -60,7 +63,7 @@ export default function ArchitectureSection() {
                   marginBottom: 20,
                 }}
               >
-                Robust Architectures
+                Back-end skills
               </h2>
             </Reveal>
 
@@ -68,31 +71,55 @@ export default function ArchitectureSection() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: 24,
+                gap: 22,
               }}
             >
               <Feature
-                icon="▶"
-                title="Node.js & Express"
-                desc="Efficient backend systems."
+                icon={postgresIcon}
+                title="PostgreSQL"
+                pct={0.8}
+                level="intermediate"
+                iconBg="rgba(34,211,238,0.08)"
+              />
+
+              <Feature
+                icon={postmanIcon}
+                title="Postman"
+                pct={0.75}
+                level="intermediate"
+                iconBg="rgba(249,115,22,0.08)"
+              />
+
+              <Feature
+                icon={springIcon}
+                title="Java + Spring Boot"
                 pct={0.9}
-                iconBg="rgba(52,211,153,0.1)"
+                level="basic"
+                iconBg="rgba(239,68,68,0.08)"
               />
 
               <Feature
-                icon="◎"
-                title="PostgreSQL & Redis"
-                desc="Fast and scalable databases."
-                pct={0.85}
-                iconBg="rgba(34,211,238,0.1)"
+                icon={dotnetIcon}
+                title=".NET"
+                pct={0.8}
+                level="basic"
+                iconBg="rgba(168,85,247,0.08)"
               />
 
               <Feature
-                icon="⬡"
-                title="Docker & CI/CD"
-                desc="Containerized deployments."
-                pct={0.87}
-                iconBg="rgba(167,139,250,0.1)"
+                icon={dockerIcon}
+                title="Docker"
+                pct={0.7}
+                level="basic"
+                iconBg="rgba(14,165,233,0.08)"
+              />
+
+              <Feature
+                icon={awsIcon}
+                title="AWS"
+                pct={0.5}
+                level="basic"
+                iconBg="rgba(250,204,21,0.08)"
               />
             </div>
           </div>

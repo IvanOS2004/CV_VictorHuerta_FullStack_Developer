@@ -59,7 +59,6 @@ export default function HeroSection() {
             minHeight: "85vh",
           }}
         >
-          {/* Left */}
           <div>
             <Reveal>
               <div
@@ -93,7 +92,7 @@ export default function HeroSection() {
               <h1
                 style={{
                   fontFamily: "'Syne',sans-serif",
-                  fontWeight: 800,
+                  fontWeight: 300,
                   fontSize: "clamp(2.8rem,5vw,4.2rem)",
                   lineHeight: 1.05,
                   letterSpacing: "-0.03em",
@@ -101,9 +100,13 @@ export default function HeroSection() {
                   marginBottom: 24,
                 }}
               >
-                Building the
+                Hello World.
                 <br />
-                <span className="gradient-text-warm">Future of the Web</span>
+                I'm Victor Huerta
+                <br />
+                <span className="gradient-text-warm">
+                  Software engineer / Full-stack developer jr.
+                </span>
               </h1>
             </Reveal>
 
@@ -130,11 +133,7 @@ export default function HeroSection() {
                   gap: 14,
                   marginBottom: 52,
                 }}
-              >
-                <button className="btn-primary">View Projects</button>
-
-                <button className="btn-ghost">Contact Me</button>
-              </div>
+              ></div>
             </Reveal>
 
             <Reveal delay={0.25}>
@@ -145,7 +144,7 @@ export default function HeroSection() {
                   alignItems: "center",
                 }}
               >
-                <Stat target={5} label="Years Exp." />
+                <Stat target={3} label="Years Exp." />
 
                 <div
                   style={{
@@ -155,28 +154,13 @@ export default function HeroSection() {
                   }}
                 />
 
-                <Stat target={48} label="Projects" />
-
-                <div
-                  style={{
-                    width: 1,
-                    height: 40,
-                    background: "#1f2937",
-                  }}
-                />
-
-                <Stat target={12} label="Open Source" />
+                <Stat target={4} label="Projects" />
               </div>
             </Reveal>
           </div>
 
-          {/* Right */}
           <Reveal delay={0.1} className="float">
-            <SplineScene
-              canvasHook={useGlobeCanvas}
-              label="[ 3D Render Canvas ]"
-              height={480}
-            />
+            <SplineScene canvasHook={useGlobeCanvas} label="" height={620} />
           </Reveal>
         </div>
       </div>
