@@ -13,6 +13,7 @@ import figmaIcon from "../assets/tech/figma.svg";
 export default function UISection() {
   return (
     <section
+      id="frontend"
       style={{
         padding: "112px 0",
         position: "relative",

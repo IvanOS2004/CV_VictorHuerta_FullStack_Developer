@@ -118,7 +118,7 @@ export default function Footer() {
 
           {/* EMAIL */}
           <a
-            href="mailto:tu_correo@gmail.com"
+            href="mailto:victor.ivan.huertac@gmail.com?subject=Portfolio%20Contact"
             aria-label="Email"
             style={{
               color: "#9ca3af",

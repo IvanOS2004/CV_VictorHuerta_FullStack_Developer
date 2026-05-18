@@ -16,7 +16,7 @@ import awsIcon from "../assets/tech/aws.svg";
 export default function ArchitectureSection() {
   return (
     <section
-      id="stack"
+      id="backend"
       style={{
         padding: "112px 0",
         position: "relative",

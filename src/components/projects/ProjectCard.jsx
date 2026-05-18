@@ -5,6 +5,7 @@ export default function ProjectCard({
   title,
   desc,
   tags = [],
+  repos = [],
   delay = 0,
 }) {
   return (
@@ -26,7 +27,6 @@ export default function ProjectCard({
               width: "100%",
               height: "100%",
               objectFit: "cover",
-
               transition: "transform 0.4s ease",
             }}
             onMouseEnter={(e) => {
@@ -84,7 +84,7 @@ export default function ProjectCard({
               display: "flex",
               flexWrap: "wrap",
               gap: 10,
-              marginBottom: 14,
+              marginBottom: 18,
             }}
           >
             {tags.map((tag, index) => (
@@ -94,23 +94,14 @@ export default function ProjectCard({
                   display: "flex",
                   alignItems: "center",
                   gap: 7,
-
                   padding: "7px 12px",
-
                   borderRadius: 999,
-
                   background: "rgba(99,102,241,0.08)",
-
                   border: "1px solid rgba(99,102,241,0.18)",
-
                   color: "#c7d2fe",
-
                   fontSize: "0.72rem",
-
                   fontFamily: "'Space Mono', monospace",
-
                   letterSpacing: "0.03em",
-
                   transition: "0.25s",
                 }}
                 onMouseEnter={(e) => {
@@ -129,24 +120,50 @@ export default function ProjectCard({
             ))}
           </div>
 
-          {/* Link */}
-          <a
-            href="#"
+          {/* Repository Buttons */}
+          <div
             style={{
-              fontFamily: "'Space Mono',monospace",
-              fontSize: "0.68rem",
-              color: "#818cf8",
-              textDecoration: "none",
               display: "flex",
-              alignItems: "center",
-              gap: 6,
-              transition: "color 0.2s",
+              gap: 10,
+              flexWrap: "wrap",
             }}
-            onMouseEnter={(e) => (e.target.style.color = "#22d3ee")}
-            onMouseLeave={(e) => (e.target.style.color = "#818cf8")}
           >
-            VIEW CODE <span>→</span>
-          </a>
+            {repos.map((repo, index) => (
+              <a
+                key={index}
+                href={repo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "'Space Mono',monospace",
+                  fontSize: "0.68rem",
+                  color: "#818cf8",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 6,
+                  padding: "10px 14px",
+                  borderRadius: 10,
+                  border: "1px solid rgba(99,102,241,0.2)",
+                  background: "rgba(99,102,241,0.06)",
+                  transition: "0.25s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#22d3ee";
+                  e.currentTarget.style.borderColor = "rgba(34,211,238,0.4)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "#818cf8";
+                  e.currentTarget.style.borderColor = "rgba(99,102,241,0.2)";
+                  e.currentTarget.style.transform = "translateY(0px)";
+                }}
+              >
+                {repo.label} <span>↗</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </Reveal>

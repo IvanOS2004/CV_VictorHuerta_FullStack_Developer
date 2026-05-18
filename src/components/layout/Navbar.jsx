@@ -3,7 +3,7 @@ import { smoothScrollTo } from "../../utils/smoothScroll";
 export default function Navbar({ activeSection }) {
   const sections = [
     { id: "experience", label: "Experience" },
-    { id: "stack", label: "Stack" },
+    { id: "frontend", label: "Stack" },
     { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" },
   ];
