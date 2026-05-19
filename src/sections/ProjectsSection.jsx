@@ -1,6 +1,11 @@
 import ProjectCard from "../components/projects/ProjectCard";
 import Reveal from "../components/common/Reveal";
 
+import medicappImg from "../assets/projects/medicapp_project.jpeg";
+import smartschoolImg from "../assets/projects/smartschool_project.PNG";
+import reciclablesImg from "../assets/projects/reciclablesguadiana_project.PNG";
+import servicioImg from "../assets/projects/serviciocitas_project.PNG";
+
 export default function ProjectsSection() {
   return (
     <section
@@ -44,7 +49,8 @@ export default function ProjectsSection() {
                 lineHeight: 1.7,
               }}
             >
-              Proyectos.
+              A collection of full-stack, mobile and backend projects designed
+              to solve real-world problems.
             </p>
           </div>
         </Reveal>
@@ -58,7 +64,7 @@ export default function ProjectsSection() {
         >
           {/* PROJECT 1 */}
           <ProjectCard
-            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+1"
+            image={medicappImg}
             title="Medical Appointment Platform"
             desc="Cross-platform medical appointment app developed using React Native, Tailwind CSS, Java Spring Boot and Postman for API testing and integration."
             tags={[
@@ -79,37 +85,22 @@ export default function ProjectsSection() {
             ]}
           />
 
-          {/* PROJECT 2 pendiente */}
+          {/* PROJECT 2 */}
           <ProjectCard
-            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+2"
-            title="Correos de México / Mex-Post APIs"
-            desc="Backend API development for logistic and package management."
-            tags={["FastAPI", "Python", "Postman", "QR Code", "PDF Automation"]}
-            repos={[
-              {
-                label: "Backend Code",
-                url: "https://github.com/usuario/backend",
-              },
-            ]}
-          />
-
-          {/* PROJECT 3 pendiente */}
-          <ProjectCard
-            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+3"
+            image={smartschoolImg}
             title="Smart School Website"
             desc="Frontend development for an educational platform."
             tags={["React", "Tailwind CSS"]}
             repos={[
               {
                 label: "Frontend Code",
-                url: "https://github.com/usuario/frontend",
               },
             ]}
           />
 
-          {/* PROJECT 4 */}
+          {/* PROJECT 3 */}
           <ProjectCard
-            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+4"
+            image={reciclablesImg}
             title="Reciclables Guadiana"
             desc="Frontend development for a recycling center."
             tags={["React", "Tailwind CSS"]}
@@ -121,10 +112,10 @@ export default function ProjectsSection() {
             ]}
           />
 
-          {/* PROJECT 5 */}
+          {/* PROJECT 4 */}
           <ProjectCard
-            image="https://placehold.co/600x400/0f172a/818cf8?text=Project+5"
-            title="Citas Servicios"
+            image={servicioImg}
+            title="Dating Services"
             desc="Appointment scheduling system for a multipurpose platform."
             tags={["Laravel", "Tailwind CSS", "Livewire", "Alpine.js"]}
             repos={[
