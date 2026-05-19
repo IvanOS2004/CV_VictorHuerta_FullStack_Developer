@@ -25,8 +25,6 @@ export default function SplineScene({
       }}
     >
       <div className="scan-line" />
-
-      {/* REAL CANVAS CONTAINER */}
       <div
         style={{
           position: "absolute",

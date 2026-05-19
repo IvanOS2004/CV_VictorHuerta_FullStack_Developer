@@ -115,7 +115,7 @@ export default function ProjectsSection() {
           {/* PROJECT 4 */}
           <ProjectCard
             image={servicioImg}
-            title="Dating Services"
+            title="Scheduling Services"
             desc="Appointment scheduling system for a multipurpose platform."
             tags={["Laravel", "Tailwind CSS", "Livewire", "Alpine.js"]}
             repos={[

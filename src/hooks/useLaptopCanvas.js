@@ -6,55 +6,68 @@ export default function useLaptopCanvas(ref) {
 
     if (!canvas) return;
 
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
     const ctx = canvas.getContext("2d");
 
-    const W = canvas.width;
-    const H = canvas.height;
-
-    let t = 0;
     let raf;
+    let t = 0;
 
     const lines = [
       {
         text: "import { useState } from 'react'",
         color: "#818cf8",
       },
-
       {
         text: "const DevArchitect = () => {",
         color: "#e5e7eb",
       },
-
       {
         text: "  const [future, setFuture] = useState(true)",
         color: "#22d3ee",
       },
-
       {
         text: "  useEffect(() => {",
         color: "#e5e7eb",
       },
-
       {
         text: "    buildTheFuture()",
         color: "#34d399",
       },
-
       {
         text: "  }, [])",
         color: "#e5e7eb",
       },
-
       {
         text: "  return <Canvas3D />",
         color: "#a78bfa",
       },
     ];
 
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+
+      const rect = parent.getBoundingClientRect();
+
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    resizeCanvas();
+
+    const resizeObserver = new ResizeObserver(resizeCanvas);
+
+    resizeObserver.observe(canvas.parentElement);
+
     const draw = () => {
+      const W = canvas.width / (window.devicePixelRatio || 1);
+      const H = canvas.height / (window.devicePixelRatio || 1);
+
       ctx.clearRect(0, 0, W, H);
 
       ctx.fillStyle = "#0d1117";
@@ -89,8 +102,11 @@ export default function useLaptopCanvas(ref) {
       raf = requestAnimationFrame(draw);
     };
 
-    raf = requestAnimationFrame(draw);
+    draw();
 
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      resizeObserver.disconnect();
+    };
   }, [ref]);
 }
