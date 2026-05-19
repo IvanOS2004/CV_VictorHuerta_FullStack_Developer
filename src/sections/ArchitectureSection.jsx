@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Reveal from "../components/common/Reveal";
 import Feature from "../components/common/Feature";
 import Blob from "../components/common/Blob";
@@ -14,11 +16,25 @@ import dockerIcon from "../assets/tech/docker.svg";
 import awsIcon from "../assets/tech/aws.svg";
 
 export default function ArchitectureSection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       id="backend"
       style={{
-        padding: "112px 0",
+        padding: isMobile ? "90px 0" : "112px 0",
         position: "relative",
         overflow: "hidden",
       }}
@@ -43,24 +59,50 @@ export default function ArchitectureSection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 64,
+
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+
+            gap: isMobile ? 60 : 64,
+
             alignItems: "center",
           }}
         >
           <Reveal delay={0.08}>
-            <SplineScene canvasHook={useServerCanvas} height={440} />
-          </Reveal>
+            <div
+              style={{
+                order: isMobile ? 1 : 1,
 
-          <div>
+                width: "100%",
+
+                maxWidth: isMobile ? 520 : "100%",
+
+                margin: isMobile ? "0 auto" : "0",
+              }}
+            >
+              <SplineScene
+                canvasHook={useServerCanvas}
+                height={isMobile ? 320 : 440}
+              />
+            </div>
+          </Reveal>
+          <div
+            style={{
+              order: isMobile ? 2 : 2,
+            }}
+          >
             <Reveal>
               <h2
                 style={{
                   fontFamily: "'Syne',sans-serif",
                   fontWeight: 800,
+
                   fontSize: "clamp(2rem,3.5vw,3rem)",
+
                   color: "#fff",
-                  marginBottom: 20,
+
+                  marginBottom: 24,
+
+                  textAlign: isMobile ? "center" : "left",
                 }}
               >
                 Back-end skills
@@ -70,7 +112,12 @@ export default function ArchitectureSection() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+
+                gridTemplateColumns:
+                  window.innerWidth <= 600
+                    ? "1fr"
+                    : "repeat(2, minmax(0, 1fr))",
+
                 gap: 22,
               }}
             >

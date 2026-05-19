@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Reveal from "../components/common/Reveal";
 import Feature from "../components/common/Feature";
 import Blob from "../components/common/Blob";
@@ -11,11 +13,25 @@ import tailwindcssIcon from "../assets/tech/tailwindcss.svg";
 import figmaIcon from "../assets/tech/figma.svg";
 
 export default function UISection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       id="frontend"
       style={{
-        padding: "112px 0",
+        padding: isMobile ? "90px 0" : "112px 0",
         position: "relative",
         overflow: "hidden",
       }}
@@ -40,22 +56,35 @@ export default function UISection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 64,
+
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+
+            gap: isMobile ? 60 : 64,
+
             alignItems: "center",
           }}
         >
-          {/* Left */}
-          <div>
+          {/* LEFT SIDE */}
+          <div
+            style={{
+              order: isMobile ? 2 : 1,
+            }}
+          >
             <Reveal>
               <h2
                 style={{
                   fontFamily: "'Syne',sans-serif",
                   fontWeight: 800,
+
                   fontSize: "clamp(2rem,3.5vw,3rem)",
+
                   letterSpacing: "-0.03em",
+
                   color: "#fff",
-                  marginBottom: 20,
+
+                  marginBottom: 24,
+
+                  textAlign: isMobile ? "center" : "left",
                 }}
               >
                 Front-end skills
@@ -65,7 +94,12 @@ export default function UISection() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+
+                gridTemplateColumns:
+                  window.innerWidth <= 600
+                    ? "1fr"
+                    : "repeat(2, minmax(0, 1fr))",
+
                 gap: 22,
               }}
             >
@@ -95,7 +129,7 @@ export default function UISection() {
 
               <Feature
                 icon={tailwindcssIcon}
-                title="Tailwindcss"
+                title="Tailwind CSS"
                 pct={0.8}
                 level="intermediate"
                 iconBg="rgba(250,204,21,0.08)"
@@ -103,12 +137,25 @@ export default function UISection() {
             </div>
           </div>
 
+          {/* RIGHT SIDE */}
           <Reveal delay={0.08}>
-            <SplineScene
-              canvasHook={useLaptopCanvas}
-              label="[ 3D Laptop Asset ]"
-              height={440}
-            />
+            <div
+              style={{
+                order: isMobile ? 1 : 2,
+
+                width: "100%",
+
+                maxWidth: isMobile ? 520 : "100%",
+
+                margin: isMobile ? "0 auto" : "0",
+              }}
+            >
+              <SplineScene
+                canvasHook={useLaptopCanvas}
+                label="[ 3D Laptop Asset ]"
+                height={isMobile ? 320 : 440}
+              />
+            </div>
           </Reveal>
         </div>
       </div>
